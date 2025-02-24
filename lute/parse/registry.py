@@ -10,6 +10,7 @@ from sys import version_info
 from lute.parse.base import AbstractParser
 from lute.parse.space_delimited_parser import SpaceDelimitedParser, TurkishParser
 from lute.parse.mecab_parser import JapaneseParser
+from lute.parse.mecab_parser_korean import KoreanParser
 from lute.parse.character_parser import ClassicalChineseParser
 
 
@@ -17,6 +18,7 @@ __LUTE_PARSERS__ = {
     "spacedel": SpaceDelimitedParser,
     "turkish": TurkishParser,
     "japanese": JapaneseParser,
+    "korean": KoreanParser,
     "classicalchinese": ClassicalChineseParser,
 }
 
@@ -26,8 +28,6 @@ def init_parser_plugins():
     Initialize parsers from plugins
     """
 
-    # Handle API breakage of entry_points.
-    # pylint: disable=no-member
     vmaj = version_info.major
     vmin = version_info.minor
     if vmaj == 3 and vmin in (8, 9, 10, 11):
